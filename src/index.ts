@@ -125,3 +125,9 @@ export async function getPermPicLogList(owner: string) {
   const { edges } = transactions;
   return edges;
 }
+
+export async function getWalletArBalance(address: string) {
+  return await arweave.wallets.getBalance(address).then((balance) => {
+    return arweave.ar.winstonToAr(balance);
+  });
+}
